@@ -62,9 +62,90 @@ ExMon.create_player("alex", :chute, :soco, :cura)
   move_rnd: :soco,
   name: "alex"
 }
+
+iex(1)> player = ExMon.create_player("Alex", :chute, :soco, :cura)
+%ExMon.Player{
+  life: 100,
+  move_avg: :chute,
+  move_heal: :cura,
+  move_rnd: :soco,
+  name: "Alex"
+}
+
+iex(2)> ExMon.start_game(player)
+{:ok, #PID<0.215.0>}
+
+iex(4)> ExMon.Game.info
+%{
+  computer: %ExMon.Player{
+    life: 100,
+    move_avg: :punch,
+    move_heal: :heal,
+    move_rnd: :kick,
+    name: "Robotinik"
+  },
+  player: %ExMon.Player{
+    life: 100, 
+    move_avg: :chute,
+    move_heal: :cura,
+    move_rnd: :soco,
+    name: "Alex"
+  },
+  status: :started,
+  turn: :player
+}
+
+
+ExMon.start_game(player)
+The game has started!
+:ok
+
+
+iex(3)> ExMon.Game.player
+%ExMon.Player{
+  life: 100,
+  move_avg: :chute,
+  move_heal: :cura,
+  move_rnd: :soco,
+  name: "Alex"
+}
+
+iex(3)> ExMon.make_move(:chute)
+{:ok, :move_avg}
+
+
+iex(6)> ExMon.make_move(:soco)
+
+====== The PLAYER attacked the Computer dealing 14 damage! ======
+
+:ok
+iex(7)> ExMon.make_move(:chute)
+
+====== The COMPUTER attacked the Player dealing 19 damage! ======
+
+:ok
+
+
+iex(10)> ExMon.Game.info()
+%{
+  computer: %ExMon.Player{
+    life: 66,
+    moves: %{move_avg: :punch, move_heal: :heal, move_rnd: :kick},
+    name: "Robotinik"
+  },
+  player: %ExMon.Player{
+    life: 60,
+    moves: %{move_avg: :chute, move_heal: :cura, move_rnd: :soco},
+    name: "Alex"
+  },
+  status: :continue,
+  turn: :player
+}
+
 ```
 
-
+## Random range
+- Enum.random(1..20)
 
 **TODO: Add description**
 
