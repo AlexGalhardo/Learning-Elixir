@@ -147,6 +147,14 @@ iex(10)> ExMon.Game.info()
 ## Random range
 - Enum.random(1..20)
 
+
+- player = ExMon.create_player("Alex", :chute, :soco, :cura)
+- ExMon.start_game(player)
+- ExMon.make_move(:chute)
+- ExMon.make_move(:chute)
+- ExMon.make_move(:cura)
+
+
 **TODO: Add description**
 
 ## Installation
