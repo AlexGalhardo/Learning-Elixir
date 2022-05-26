@@ -36,6 +36,7 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 ```
 
 ## iex
+- $ iex -S mix
 - params = %{name: "alex", password_hash: "123456"}
 - changeset = PokemonApi.Trainer.changeset(params)
 - Argon2.add_hash("123456")
@@ -43,6 +44,11 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - PokemonApi.Repo.insert(changeset)
 - PokemonApi.Repo.all(PokemonApi.Trainer)
 - PokemonApi.Repo.get(PokemonApi.Trainer, "uuid-here")
+- alias PokemonApi.Trainer
+- alias PokemonApi.Repo
+- Repo.all(Trainer)
+- PokemonApi.delete_trainer("a6c996c0-3142-41fa-8916-95af8082a0c8")
+
 
 ## Commands
 - $ mix ecto.drop
