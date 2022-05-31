@@ -10,6 +10,7 @@ defmodule PokemonApiWeb.Router do
 
     # resources "/trainers", TrainersController
     resources "/trainers", TrainersController, only: [:create, :show, :delete, :update]
+    get "/pokemons/:name", PokemonsController, :show
   end
 
   # Enables LiveDashboard only for development

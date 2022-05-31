@@ -51,14 +51,22 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - PokemonApi.fetch_trainer("acd1ad58-6f16-4ecb-a59e-47760a6adb5f")
 - params = %{id: "acd1ad58-6f16-4ecb-a59e-47760a6adb5f", name: "Banana Silva", password: "123456"}
 - params = %{"id" => "acd1ad58-6f16-4ecb-a59e-47760a6adb5f", "name" => "Banana Silva", "password" => "123456"}
+- http put http://localhost:4000/api/trainers/acd1ad58-6f16-4ecb-a59e-47760a6adb5f name="Rafael Noronha" password="123456"
+- alias PokemonApi.PokeApi.Client
+- Client.get_pokemon("pikachu") 
+- PokemonApi.fetch_pokemon("pikachu")
+- 
 
 
 ## Commands
 - $ mix ecto.drop
 - $ mix ecto.create
+- $ mix ecto.migrate
 - $ mix phx.server
 - $ iex -S mix phx.server
 - $ mix ecto.gen.migration create_trainer_table
 - $ mix ecto.migrate
 - $ mix deps.get
 - $ http post http://localhost:4000/api/trainers name="alex" password="123456"
+- $ http get http://localhost:4000/api/pokemons/pikachu
+- $ mix ecto.gen.migration add_pokemons_table
