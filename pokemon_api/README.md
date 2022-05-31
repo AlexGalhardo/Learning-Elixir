@@ -49,6 +49,8 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - Repo.all(Trainer)
 - PokemonApi.delete_trainer("a6c996c0-3142-41fa-8916-95af8082a0c8")
 - PokemonApi.fetch_trainer("acd1ad58-6f16-4ecb-a59e-47760a6adb5f")
+- params = %{id: "acd1ad58-6f16-4ecb-a59e-47760a6adb5f", name: "Banana Silva", password: "123456"}
+- params = %{"id" => "acd1ad58-6f16-4ecb-a59e-47760a6adb5f", "name" => "Banana Silva", "password" => "123456"}
 
 
 ## Commands
