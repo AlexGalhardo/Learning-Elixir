@@ -13,8 +13,12 @@ defmodule PokemonApi.Trainer.Get do
 
   defp get(uuid) do
     case Repo.get(Trainer, uuid) do
-      nil -> {:error, "Trainer not found!"}
-      trainer -> {:ok, trainer}
+      nil ->
+        {:error, "Trainer not found!"}
+
+      # trainer -> {:ok, trainer}
+      trainer ->
+        {:ok, Repo.preload(trainer, :pokemon)}
     end
   end
 end

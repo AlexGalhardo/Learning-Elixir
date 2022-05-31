@@ -55,8 +55,20 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - alias PokemonApi.PokeApi.Client
 - Client.get_pokemon("pikachu") 
 - PokemonApi.fetch_pokemon("pikachu")
-- 
-
+- params = %{name: "pikachu", nickname: "pika", weight: 50, types: ["eletric"], trainer_id: 12345}
+- Ecto.UUID.generate()
+- params = %{"name" => "pikachu", "nickname" => "pika", "weight" => 50, types => ["eletric"], "trainer_id" => "dd045949-a636-400a-96e6-5525a4888959"}
+- params = %{name: "Alex", password: "123456"}
+- params = %{"name" => "pikachu", "nickname" => "pika", "trainer_id" => "dd045949-a636-400a-96e6-5525a4888959"}
+- Create.call(params)
+- PokemonApi.Repo.all(PokemonApi.Trainer)
+- Repo.get(Trainer, "dd045949-a636-400a-96e6-5525a4888959") |> Repo.preload(:pokemon)
+- PokemonApi.Trainer.Pokemon.Get.call("cdbfec00-15b6-4c06-a804-e6f53b381e4c") |> PokemonApi.Repo.preload(:trainer)
+- {:ok, pokemon} = PokemonApi.Trainer.Pokemon.Get.call("cdbfec00-15b6-4c06-a804-e6f53b381e4c")
+- PokemonApi.Repo.preload(pokemon, :trainer)
+- params = %{"id" => "cdbfec00-15b6-4c06-a804-e6f53b381e4c", "nickname" => "pastel"}
+- PokemonApi.Trainer.Pokemon.Update.call(params) 
+- params = %{"id" => "cdbfec00-15b6-4c06-a804-e6f53b381e", "nickname" => "pastel"} 
 
 ## Commands
 - $ mix ecto.drop
@@ -70,3 +82,4 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - $ http post http://localhost:4000/api/trainers name="alex" password="123456"
 - $ http get http://localhost:4000/api/pokemons/pikachu
 - $ mix ecto.gen.migration add_pokemons_table
+- $ http post http://localhost:4000/api/trainer_pokemons name=charmander nickname=alex trainer_id="dd045949-a636-400a-96e6-5525a4888959"
