@@ -83,3 +83,6 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - $ http get http://localhost:4000/api/pokemons/pikachu
 - $ mix ecto.gen.migration add_pokemons_table
 - $ http post http://localhost:4000/api/trainer_pokemons name=charmander nickname=alex trainer_id="dd045949-a636-400a-96e6-5525a4888959"
+- $ mix test
+- $ MIX_ENV=test mix ecto.drop
+- $ mix test test/poke_api/client_test.exs

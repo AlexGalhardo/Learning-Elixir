@@ -7,9 +7,9 @@ use Mix.Config
 # Run `mix help test` for more information.
 config :pokemon_api, PokemonApi.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "root",
   database: "pokemon_api_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "localhost",
+  hostname: "172.27.0.2",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
@@ -20,3 +20,5 @@ config :pokemon_api, PokemonApiWeb.Endpoint,
 
 # Print only warnings and errors during test
 config :logger, level: :warn
+
+config :tesla, adapter: Tesla.Mock
