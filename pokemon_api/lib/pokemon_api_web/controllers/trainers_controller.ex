@@ -1,12 +1,29 @@
 defmodule PokemonApiWeb.TrainersController do
   use PokemonApiWeb, :controller
 
+  alias PokemonApiWeb.Auth.Guardian
+
   action_fallback PokemonApiWeb.FallbackController
 
   def create(conn, params) do
-    params
-    |> PokemonApi.create_trainer()
-    |> handle_response(conn, "create.json", :created)
+    with {:ok, trainer} <- PokemonApi.create_trainer(params),
+         {:ok, token, _claims} <- Guardian.encode_and_sign(trainer) do
+      conn
+      |> put_status(:created)
+      |> render("create.json", %{trainer: trainer, token: token})
+    end
+
+    # params
+    # |> PokemonApi.create_trainer()
+    # |> handle_response(conn, "create.json", :created)
+  end
+
+  def sign_in(conn, params) do
+    with {:ok, token} <- Guardian.authenticate(params) do
+      conn
+      |> put_status(:ok)
+      |> render("sign_in.json", token: token)
+    end
   end
 
   def delete(conn, %{"id" => id}) do

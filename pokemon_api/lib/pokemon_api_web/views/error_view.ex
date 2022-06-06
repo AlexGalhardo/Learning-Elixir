@@ -24,6 +24,10 @@ defmodule PokemonApiWeb.ErrorView do
     %{message: message}
   end
 
+  def render("401.json", %{result: %Ecto.Changeset{} = result}) do
+    %{message: translate_errors(result)}
+  end
+
   defp translate_errors(changeset) do
     traverse_errors(changeset, fn {msg, opts} ->
       Enum.reduce(opts, msg, fn {key, value}, acc ->

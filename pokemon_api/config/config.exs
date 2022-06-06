@@ -29,3 +29,13 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
+
+config :pokemon_api, PokemonApiWeb.Auth.Guardian,
+  issuer: "pokemon_api",
+  secret_key: "+xSwOAYXvwZI7ajj+PMQHX1jNZLEyVxEut/ubKurumyXjfxOn/K04BWZv0k2RROh"
+
+config :pokemon_api, PokemonApiWeb.Auth.Pipeline,
+  module: PokemonApiWeb.Auth.Guardian,
+  error_handler: PokemonApiWeb.Auth.ErrorHandler
+
+# "Secret key. You can use `mix guardian.gen.secret` to get one"

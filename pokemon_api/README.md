@@ -86,3 +86,8 @@ iex(3)> PokemonApi.Trainer.changeset(params)
 - $ mix test
 - $ MIX_ENV=test mix ecto.drop
 - $ mix test test/poke_api/client_test.exs
+- $ http post http://localhost:4000/api/trainers name="alex" password="123456"
+- $ http post http://localhost:4000/api/trainers/signin id="b6a2bc7a-4654-4e8c-b756-a9320d947695" password="123456"
+
+## Deps
+- https://github.com/ueberauth/guardian

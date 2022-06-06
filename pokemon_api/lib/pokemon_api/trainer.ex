@@ -29,7 +29,7 @@ defmodule PokemonApi.Trainer do
     |> put_pass_hash()
   end
 
-  def changeset(params), do: create_changeset(%__MODULE__{}, params)
+  # def changeset(params), do: create_changeset(%__MODULE__{}, params)
   def changeset(trainer, params), do: create_changeset(trainer, params)
 
   defp create_changeset(module_or_trainer, params) do
